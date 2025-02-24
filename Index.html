@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - Professional SaaS Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f7fa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sidebar li:hover, .sidebar li.active {
+            background: #34495e;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-profile button {
+            padding: 5px 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tool {
+            display: none;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool.active {
+            display: block;
+        }
+
+        .tool h2 {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .output {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .output img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Tools</h2>
+            <nav>
+                <ul>
+                    <li class="active" onclick="showTool('text-to-image')">Text to Image</li>
+                    <li onclick="showTool('text-to-pdf')">Text to PDF</li>
+                    <li onclick="showTool('image-compressor')">Image Compressor</li>
+                    <li onclick="showTool('qr-generator')">QR Code Generator</li>
+                    <li onclick="showTool('color-picker')">Color Picker</li>
+                    <li onclick="showTool('word-counter')">Word Counter</li>
+                    <li onclick="showTool('password-generator')">Password Generator</li>
+                    <li onclick="showTool('unit-converter')">Unit Converter</li>
+                    <li onclick="showTool('todo-list')">To-Do List</li>
+                    <li onclick="showTool('calculator')">Calculator</li>
+                    <li onclick="showTool('markdown-editor')">Markdown Editor</li>
+                    <li onclick="showTool('json-formatter')">JSON Formatter</li>
+                    <li onclick="showTool('base64-encoder')">Base64 Encoder</li>
+                    <li onclick="showTool('timestamp-converter')">Timestamp Converter</li>
+                    <li onclick="showTool('lorem-ipsum')">Lorem Ipsum Generator</li>
+                    <li onclick="showTool('image-resizer')">Image Resizer</li>
+                    <li onclick="showTool('text-diff')">Text Diff Checker</li>
+                    <li onclick="showTool('signature-generator')">Signature Generator</li>
+                    <li onclick="showTool('currency-converter')">Currency Converter</li>
+                    <li onclick="showTool('weather-checker')">Weather Checker</li>
+                    <li onclick="showTool('barcode-generator')">Barcode Generator</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Welcome to Tools</h1>
+                <div class="user-profile">
+                    <span>User</span>
+                    <button>Logout</button>
+                </div>
+            </header>
+
+            <!-- Tool Section -->
+            <section id="tool-section">
+                <!-- Text to Image Tool (Default) -->
+                <div id="text-to-image" class="tool active">
+                    <h2>Text to Image Generator</h2>
+                    <textarea id="image-prompt" placeholder="Enter your text prompt here..."></textarea>
+                    <button onclick="generateImage()">Generate Image</button>
+                    <div id="image-output" class="output"></div>
+                </div>
+
+                <!-- Placeholder for other tools -->
+                <div id="text-to-pdf" class="tool">Text to PDF Tool (Coming Soon)</div>
+                <div id="image-compressor" class="tool">Image Compressor Tool (Coming Soon)</div>
+                <div id="qr-generator" class="tool">QR Code Generator Tool (Coming Soon)</div>
+                <div id="color-picker" class="tool">Color Picker Tool (Coming Soon)</div>
+                <div id="word-counter" class="tool">Word Counter Tool (Coming Soon)</div>
+                <div id="password-generator" class="tool">Password Generator Tool (Coming Soon)</div>
+                <div id="unit-converter" class="tool">Unit Converter Tool (Coming Soon)</div>
+                <div id="todo-list" class="tool">To-Do List Tool (Coming Soon)</div>
+                <div id="calculator" class="tool">Calculator Tool (Coming Soon)</div>
+                <div id="markdown-editor" class="tool">Markdown Editor Tool (Coming Soon)</div>
+                <div id="json-formatter" class="tool">JSON Formatter Tool (Coming Soon)</div>
+                <div id="base64-encoder" class="tool">Base64 Encoder Tool (Coming Soon)</div>
+                <div id="timestamp-converter" class="tool">Timestamp Converter Tool (Coming Soon)</div>
+                <div id="lorem-ipsum" class="tool">Lorem Ipsum Generator Tool (Coming Soon)</div>
+                <div id="image-resizer" class="tool">Image Resizer Tool (Coming Soon)</div>
+                <div id="text-diff" class="tool">Text Diff Checker Tool (Coming Soon)</div>
+                <div id="signature-generator" class="tool">Signature Generator Tool (Coming Soon)</div>
+                <div id="currency-converter" class="tool">Currency Converter Tool (Coming Soon)</div>
+                <div id="weather-checker" class="tool">Weather Checker Tool (Coming Soon)</div>
+                <div id="barcode-generator" class="tool">Barcode Generator Tool (Coming Soon)</div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Show selected tool
+        function showTool(toolId) {
+            document.querySelectorAll('.tool').forEach(tool => tool.classList.remove('active'));
+            document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
+            
+            document.getElementById(toolId).classList.add('active');
+            document.querySelector(`li[onclick="showTool('${toolId}')"]`).classList.add('active');
+        }
+
+        // Simulate Text-to-Image generation (replace with real API later)
+        function generateImage() {
+            const prompt = document.getElementById('image-prompt').value;
+            const output = document.getElementById('image-output');
+            
+            if (!prompt) {
+                output.innerHTML = '<p>Please enter a prompt!</p>';
+                return;
+            }
+
+            output.innerHTML = '<p>Generating...</p>';
+            setTimeout(() => {
+                // Placeholder image (replace with API response)
+                output.innerHTML = `<img src="https://via.placeholder.com/400x300?text=${encodeURIComponent(prompt)}" alt="Generated Image">`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
