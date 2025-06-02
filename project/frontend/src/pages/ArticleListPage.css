@@ -1,0 +1,148 @@
+/* ArticleListPage.css */
+.article-list-page {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.article-list-page .page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.article-list-page .page-header h1 {
+    color: #333;
+}
+
+.articles-container {
+    display: grid;
+    gap: 30px;
+}
+
+.article-summary-item {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.article-summary-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.article-summary-item h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.article-summary-item h2 a {
+    text-decoration: none;
+    color: #2c3e50;
+    transition: color 0.2s ease;
+}
+
+.article-summary-item h2 a:hover {
+    color: #3498db;
+}
+
+.article-meta {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.article-excerpt {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.read-more-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.read-more-link:hover {
+    color: #2980b9;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.pagination-controls button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.pagination-controls button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.pagination-controls span {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Loading and error messages (can share with HomePage.css or make global) */
+.article-list-page .loading-message,
+.article-list-page .error-message,
+.article-list-page .no-articles-message {
+    text-align: center;
+    font-size: 1.1em;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.article-list-page .loading-message {
+    color: #2980b9;
+}
+
+.article-list-page .error-message {
+    color: #c0392b;
+    background-color: #fdd;
+    border: 1px solid #c0392b;
+}
+
+.article-list-page .no-articles-message {
+    color: #7f8c8d;
+}
+
+@media (max-width: 600px) {
+    .article-list-page {
+        padding: 15px;
+    }
+    .article-summary-item {
+        padding: 15px;
+    }
+    .pagination-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
