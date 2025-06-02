@@ -1,0 +1,12 @@
+/* Global App Styles - Keep this minimal or use for layout if needed */
+
+/* Example: Ensure app takes full height if you have sticky footers etc. */
+/* html, body, #root, .App {
+  height: 100%;
+} */
+
+.App {
+  /* If you want a max-width for the entire app container, you can set it here,
+     but HomePage.css already has its own max-width for its content. */
+  /* text-align: center; /* This was in Vite's default, remove if not needed */
+}
